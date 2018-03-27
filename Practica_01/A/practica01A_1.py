@@ -1,4 +1,7 @@
-bases3 = { 'UUU':'F', 'UUC':'F', 'UUA':'L', 'UUG':'L',
+import sys
+
+bases3 = {
+		'UUU':'F', 'UUC':'F', 'UUA':'L', 'UUG':'L',
 	    'UCU':'S', 'UCC':'s', 'UCA':'S', 'UCG':'S',
 	    'UAU':'Y', 'UAC':'Y', 'UAA':'.', 'UAG':'.',
 	    'UGU':'C', 'UGC':'C', 'UGA':'.', 'UGG':'W',
@@ -13,13 +16,17 @@ bases3 = { 'UUU':'F', 'UUC':'F', 'UUA':'L', 'UUG':'L',
 	    'GUU':'V', 'GUC':'V', 'GUA':'V', 'GUG':'V',
 	    'GCU':'A', 'GCC':'A', 'GCA':'A', 'GCG':'A',
 	    'GAU':'D', 'GAC':'D', 'GAA':'E', 'GAG':'E',
-	    'GGU':'G', 'GGC':'G', 'GGA':'G', 'GGG':'G',}
+	    'GGU':'G', 'GGC':'G', 'GGA':'G', 'GGG':'G'
+		}
 
 def leer(archivo):
+	""" Lee linea a linea el archivo """
 	archivo = open(archivo,'r')
-	with archivo as  abrir:
-		linea = abrir.readline()
-		return linea 
+	retornar = ""
+	for linea in archivo:		
+		retornar+=linea[:len(linea)]
+
+	return retornar
 
 def transcripcion(cadena):
 	""" Reemplazar la T por la U """
@@ -27,6 +34,7 @@ def transcripcion(cadena):
 	return trad
 
 def traduccion(secuencia):
+	""" Traduce a ARN, traduciendo un codon a un aminoacido"""
 	cad_trad = ""
 	for i in xrange(0, len(secuencia), 3):
 		codon = secuencia[i: i+3]
@@ -36,12 +44,23 @@ def traduccion(secuencia):
 				cad_trad+=val
 	return cad_trad
 
-def main():
-	cadena = leer('practica01A_1.txt')
-	secuencia = transcripcion(cadena)
-	print "Secuencia inicial: ", secuencia
 
-	cad_traducida = traduccion(secuencia)
-	print "Cadena traducida:\n",cad_traducida
+if __name__ == "__main__":
+	if(len(sys.argv) > 1):
+		inputfile = sys.argv[1]
 
-main()
+		cadena = leer(inputfile)
+		print "Cadena inicial: \n", cadena
+		
+		transcr = transcripcion(cadena)
+		print "Cadena transcrita: \n", transcr
+
+		cad_traducida = traduccion(transcr)
+		print "Cadena traducida: (Aminoacidos) \n",cad_traducida
+	else:
+		print 'python [script] [inputfile] '
+	
+	
+
+
+

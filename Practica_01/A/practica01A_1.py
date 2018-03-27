@@ -42,6 +42,6 @@ def main():
 	print "Secuencia inicial: ", secuencia
 
 	cad_traducida = traduccion(secuencia)
-	print "Cadena traducida: \n",cad_traducida
+	print "Cadena traducida:\n",cad_traducida
 
 main()

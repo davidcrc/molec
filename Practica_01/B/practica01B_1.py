@@ -16,7 +16,8 @@ bases3 = {
 	    'GUU':'V', 'GUC':'V', 'GUA':'V', 'GUG':'V',
 	    'GCU':'A', 'GCC':'A', 'GCA':'A', 'GCG':'A',
 	    'GAU':'D', 'GAC':'D', 'GAA':'E', 'GAG':'E',
-	    'GGU':'G', 'GGC':'G', 'GGA':'G', 'GGG':'G'
+	    'GGU':'G', 'GGC':'G', 'GGA':'G', 'GGG':'G',
+		'': 'X'
 		}
 
 def leer(archivo):

@@ -1,5 +1,7 @@
 import sys
-
+# Practica01A_1 : Transcribir y traducir una cadena
+# python practica01A_1.py practica01A_1.txt
+# 
 bases3 = {
 		'UUU':'F', 'UUC':'F', 'UUA':'L', 'UUG':'L',
 	    'UCU':'S', 'UCC':'s', 'UCA':'S', 'UCG':'S',
@@ -23,9 +25,11 @@ def leer(archivo):
 	""" Lee linea a linea el archivo """
 	archivo = open(archivo,'r')
 	retornar = ""
-	for linea in archivo:		
-		retornar+=linea[:len(linea)]
-
+	for linea in archivo:
+		if (linea[len(linea)-1] == '\n'):
+			retornar+=linea[:len(linea)-1]
+		else:
+			retornar+=linea[:len(linea)]
 	return retornar
 
 def transcripcion(cadena):
